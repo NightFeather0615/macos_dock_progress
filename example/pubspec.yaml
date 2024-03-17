@@ -1,5 +1,5 @@
 name: macos_dock_progress_example
-description: "Interacting with macOS dock icon progress bars in Flutter."
+description: "Example app of macos_dock_progress"
 
 publish_to: 'none'
 
