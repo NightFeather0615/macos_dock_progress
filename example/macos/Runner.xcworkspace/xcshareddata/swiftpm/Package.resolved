@@ -1,0 +1,15 @@
+{
+  "originHash" : "3e0046e1b0518dc180bd8a7c98fa476d9af079586f505a34aa5b924f90460bda",
+  "pins" : [
+    {
+      "identity" : "dockprogress",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/DockProgress",
+      "state" : {
+        "revision" : "fb80c50c8eac4c1143da6ec602b8fad760c1613a",
+        "version" : "4.3.0"
+      }
+    }
+  ],
+  "version" : 3
+}
