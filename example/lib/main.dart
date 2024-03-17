@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:macos_dock_progress/macos_dock_progress.dart';
 
 void main() {
@@ -14,7 +13,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _dockProgressPlugin = DockProgress();
   double _value = 0.0;
   String style = "ProgressBarStyle.bar";
   final TextEditingController _badgeInput = TextEditingController(text: "0");
@@ -36,8 +34,8 @@ class _MyAppState extends State<MyApp> {
                   Text("Progress: ${(_value * 100).toStringAsFixed(1)}%"),
                   Slider(
                     onChanged: (value) async {
-                      _dockProgressPlugin.setProgress(value);
-                      _value = await _dockProgressPlugin.getProgress() ?? 0;
+                      DockProgress.setProgress(value);
+                      _value = await DockProgress.getProgress() ?? 0;
                       setState(() {});
                     },
                     max: 1.0,
@@ -48,7 +46,7 @@ class _MyAppState extends State<MyApp> {
                     controller: _badgeInput,
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
-                      _dockProgressPlugin.setBadgeValue(int.tryParse(value) ?? 0);
+                      DockProgress.setBadgeValue(int.tryParse(value) ?? 0);
                       style = "Badge";
                       setState(() {});
                     },
@@ -58,8 +56,8 @@ class _MyAppState extends State<MyApp> {
                   ),
                   ElevatedButton(
                     onPressed: () async {
-                      _dockProgressPlugin.resetProgress();
-                      _value = await _dockProgressPlugin.getProgress() ?? 0;
+                      DockProgress.resetProgress();
+                      _value = await DockProgress.getProgress() ?? 0;
                       setState(() {});
                     },
                     child: const Text("Reset Progress"),
@@ -70,7 +68,7 @@ class _MyAppState extends State<MyApp> {
                     children: [
                       OutlinedButton(
                         onPressed: () {
-                          _dockProgressPlugin.changeStyle(ProgressBarStyle.bar);
+                          DockProgress.changeStyle(ProgressBarStyle.bar);
                           style = "ProgressBarStyle.bar";
                           setState(() {});
                         },
@@ -79,7 +77,7 @@ class _MyAppState extends State<MyApp> {
                       const SizedBox(height: 10,),
                       OutlinedButton(
                         onPressed: () {
-                          _dockProgressPlugin.changeStyle(ProgressBarStyle.circle);
+                          DockProgress.changeStyle(ProgressBarStyle.circle);
                           style = "ProgressBarStyle.circle";
                           setState(() {});
                         },
@@ -88,7 +86,7 @@ class _MyAppState extends State<MyApp> {
                       const SizedBox(height: 10,),
                       OutlinedButton(
                         onPressed: () {
-                          _dockProgressPlugin.changeStyle(ProgressBarStyle.squircle);
+                          DockProgress.changeStyle(ProgressBarStyle.squircle);
                           style = "ProgressBarStyle.squircle";
                           setState(() {});
                         },
