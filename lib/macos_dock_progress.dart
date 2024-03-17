@@ -1,4 +1,3 @@
-
 import 'macos_dock_progress_platform_interface.dart';
 
 enum ProgressBarStyle {

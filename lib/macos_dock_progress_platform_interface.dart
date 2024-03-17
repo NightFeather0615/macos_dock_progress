@@ -5,7 +5,7 @@ import 'macos_dock_progress_method_channel.dart';
 
 abstract class DockProgressPlatform extends PlatformInterface {
   /// Constructs a MacosDockProgressPlatform.
-  DockProgressPlatform() : super(token: _token);
+  DockProgressPlatform(): super(token: _token);
 
   static final Object _token = Object();
 
