@@ -28,21 +28,28 @@ public class MacosDockProgressPlugin: NSObject, FlutterPlugin {
         DockProgress.resetProgress()
         result(nil)
 
-      case "setBadgeValue":
-        var targetProgress = ((call.arguments as? Dictionary<String, Int>)?["value"] ?? 0) as Int
-        if (0 > targetProgress) {
-          targetProgress = 0
-        }
-        DockProgress.style = .badge(color: NSColor.systemBlue, badgeValue: { targetProgress })
-        result(nil)
-
       case "changeStyle":
-        let targetStyle = ((call.arguments as? Dictionary<String, String>)?["style"] ?? "") as String
-        switch targetStyle {
+        let styleData = call.arguments as! Dictionary<String, Any>
+        
+        let styleType = styleData["type"] as! String
+        let badgeValue = styleData["badge_value"] as! Int
+        let radius = styleData["radius"] as! Double
+
+        let rawColor = styleData["color"] as! [Double]
+        let color = NSColor.init(
+          red: CGFloat.init(rawColor[0]),
+          green: CGFloat.init(rawColor[1]),
+          blue: CGFloat.init(rawColor[2]),
+          alpha: CGFloat.init(rawColor[3])
+        )
+
+        switch styleType {
           case "squircle":
-            DockProgress.style = .squircle(color: NSColor.systemBlue.withAlphaComponent(0.8))
+            DockProgress.style = .squircle(color: color)
           case "circle":
-            DockProgress.style = .circle(radius: 55, color: NSColor.systemBlue)
+            DockProgress.style = .circle(radius: radius, color: color)
+          case "badge":
+            DockProgress.style = .badge(color: color, badgeValue: { badgeValue })
           default:
             DockProgress.style = .bar
         }

@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Change how `changeStyle` is accessed
+
 ## 1.0.0
 
 * Make `DockProgress`'s methods static for ease of use

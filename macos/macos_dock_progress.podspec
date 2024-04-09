@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'macos_dock_progress'
-  s.version          = '0.0.1'
+  s.version          = '1.1.0'
   s.summary          = 'An API wrapper of DockProgress for Flutter'
   s.description      = <<-DESC
   Interacting with macOS dock icon progress bars in Flutter.

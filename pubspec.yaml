@@ -1,6 +1,6 @@
 name: macos_dock_progress
 description: "An API wrapper of DockProgress for Flutter, make you able to interacting with macOS dock icon progress bars in Flutter."
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/NightFeather0615/macos_dock_progress
 
 environment:

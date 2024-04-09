@@ -17,7 +17,8 @@ class MethodChannelDockProgress extends DockProgressPlatform {
 
   @override
   Future<double?> setProgress(double value) async {
-    return await methodChannel.invokeMethod<double>('setProgress', {"value": value});
+    return await methodChannel
+        .invokeMethod<double>('setProgress', {"value": value});
   }
 
   @override
@@ -26,12 +27,7 @@ class MethodChannelDockProgress extends DockProgressPlatform {
   }
 
   @override
-  Future<void> setBadgeValue(int value) async {
-    return await methodChannel.invokeMethod<void>('setBadgeValue', {"value": value});
-  }
-
-  @override
   Future<void> changeStyle(ProgressBarStyle style) async {
-    return await methodChannel.invokeMethod<void>('changeStyle', {"style": style.toString()});
+    return await methodChannel.invokeMethod<void>('changeStyle', style.toMap());
   }
 }

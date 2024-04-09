@@ -5,3 +5,27 @@ An API wrapper of [DockProgress](https://github.com/sindresorhus/DockProgress) f
 
 ## Usage
 See [example](https://github.com/NightFeather0615/macos_dock_progress/tree/main/example).
+
+## Command SwiftCompile failed
+If you are experiencing Swift compile failed issues, please follow the instructions below.
+
+### Config macOS deployment target (`MACOSX_DEPLOYMENT_TARGET`) for Pod
+```ruby
+# macos/Podfile
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    flutter_additional_macos_build_settings(target)
+
+    # Add lines below
+    target.build_configurations.each do |config|
+      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.14' # >=10.13
+    end
+  end
+end
+```
+
+### Disable Swift compiler optimization
+1. Open `macos/Runner.xcodeproj` in Xcode
+2. Navigate to `Runner` > Build Settings > Swift Compiler - Code Generation
+3. Set Optimization Level to `No Optimization [-Onone]`

@@ -5,7 +5,7 @@ import 'macos_dock_progress_method_channel.dart';
 
 abstract class DockProgressPlatform extends PlatformInterface {
   /// Constructs a MacosDockProgressPlatform.
-  DockProgressPlatform(): super(token: _token);
+  DockProgressPlatform() : super(token: _token);
 
   static final Object _token = Object();
 
@@ -37,11 +37,6 @@ abstract class DockProgressPlatform extends PlatformInterface {
   /// Resets the current value of the progress bar.
   Future<void> resetProgress() async {
     throw UnimplementedError('resetProgress() has not been implemented.');
-  }
-
-  /// Sets the value of the badge indicator, this method will change the style to badge.
-  Future<void> setBadgeValue(int value) async {
-    throw UnimplementedError('setBadgeValue() has not been implemented.');
   }
 
   /// Change the style of the progress bar.
